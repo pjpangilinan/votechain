@@ -2,6 +2,8 @@
 # Exit on error
 set -o errexit
 
+export DJANGO_SETTINGS_MODULE=backend.settings
+
 # 1. Install all the Python libraries from requirements.txt
 pip install -r requirements.txt
 
