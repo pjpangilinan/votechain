@@ -12,7 +12,7 @@ pip install -r requirements.txt
 # This gathers admin files so WhiteNoise can serve them
 python manage.py collectstatic --no-input
 
-python manage.py createsuperuser --no-input --username=$DJANGO_SUPERUSER_USERNAME --email=$DJANGO_SUPERUSER_EMAIL --password=$DJANGO_SUPERUSER_PASSWORD
+python manage.py createsuperuser --no-input --username=$DJANGO_SUPERUSER_USERNAME --email=$DJANGO_SUPERUSER_EMAIL
 
 # 3. Run the database migrations
 python manage.py migrate
