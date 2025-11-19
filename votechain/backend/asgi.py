@@ -1,21 +1,20 @@
 import os
-from django.core.asgi import get_asgi_application
+import django
 
-# --- ADDED ---
+# 1. Set the default settings module
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
+
+# 2. Initialize Django FIRST
+django.setup()
+
+# 3. Now it is safe to import other parts of the app
+from django.core.asgi import get_asgi_application
 from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
 import voting_api.routing
-# -------------
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
-
-# --- This part is CHANGED ---
 application = ProtocolTypeRouter({
-    
-    # 1. Handle standard HTTP requests (your API)
     "http": get_asgi_application(),
-    
-    # 2. Handle WebSocket requests
     "websocket": AuthMiddlewareStack(
         URLRouter(
             voting_api.routing.websocket_urlpatterns
