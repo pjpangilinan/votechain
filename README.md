@@ -31,10 +31,10 @@ The system is built around a Raspberry Pi 5 controller acting as the central pro
 
 ## Screenshots
 
-Voting Terminal Interface
+Voting Terminal Interface <br>
 ![Images for the Voting Terminal](https://github.com/pjpangilinan/votechain/blob/main/terminal_images.png)
 
-Web Application Interface
+Web Application Interface <br>
 ![Images for the Web Application](https://github.com/pjpangilinan/votechain/blob/main/web_images.png)
 
 
