@@ -14,7 +14,7 @@ import RPi.GPIO as GPIO
 from pyfingerprint.pyfingerprint import PyFingerprint
 
 BASE_URL = "https://votechain.tail841e2c.ts.net:8443"
-API_KEY = "my_secret_pi_key_123"
+API_KEY = ""
 HEADERS = {"x-api-key": API_KEY, "Content-Type": "application/json"}
 
 TM_CLK = 23
