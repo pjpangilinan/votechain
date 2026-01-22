@@ -27,3 +27,18 @@ The system is built around a Raspberry Pi 5 controller acting as the central pro
     2. Voting: Once authenticated, the user selects candidates via the touchscreen interface.
     3. Blockchain Submission: The vote is encrypted, hashed, and appended to the blockchain. A unique "Digital Receipt" (transaction hash) is displayed to the voter.
     4. Public Verification: The vote count updates instantly on the public web dashboard, where users can verify their transaction hash against the public ledger.
+
+
+## Screenshots
+
+Voting Terminal Interface
+![Images for the Voting Terminal](https://github.com/pjpangilinan/votechain/blob/main/terminal_images.png)
+
+Web Application Interface
+![Images for the Web Application](https://github.com/pjpangilinan/votechain/blob/main/web_images.png)
+
+
+## Documentation
+
+[Documentation](https://github.com/pjpangilinan/votechain/blob/main/VOTECHAIN.pdf)
+
