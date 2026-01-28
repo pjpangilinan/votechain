@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Layout = ({ children }) => {
+  const currentYear = new Date().getFullYear();
+  
   return (
     <div className="min-h-screen flex flex-col bg-[#050511] text-[#E0F7FA] font-sans selection:bg-[#00E5FF] selection:text-[#050511]">
       <header className="sticky top-0 z-50 w-full border-b border-[#00E5FF]/20 bg-[#050511]/95 backdrop-blur-md px-6 py-4 lg:px-20 shadow-[0_4px_30px_rgba(0,229,255,0.05)]">
@@ -35,3 +37,4 @@ const Layout = ({ children }) => {
 };
 
 export default Layout;
+
