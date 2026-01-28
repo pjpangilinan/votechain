@@ -270,13 +270,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Layout from '../components/Layout';
 
-// 1. DEFINE MOCK DATA
 const MOCK_DATA = {
   metadata: {
     name: "2025 Student Council Election",
     description: "Official voting for the Student Body President and Treasurer positions. Ensure you have reviewed the candidates' manifestos.",
     is_active: true,
-    end_date: new Date(new Date().getTime() + 172800000).toISOString(), // Ends in 2 days
+    end_date: new Date(new Date().getTime() + 172800000).toISOString(), 
   },
   stats: {
     total_votes: 1243,
@@ -302,7 +301,6 @@ const MOCK_DATA = {
     }
   ],
   ledger: [
-    // Create a few fake blocks
     { current_hash: "0x8f2a...9d12", timestamp: "14:32", ballot_data: { "President": "Sarah Connor", "Treasurer": "Bob Miller" } },
     { current_hash: "0x7b1c...4e33", timestamp: "14:30", ballot_data: { "President": "John Smith", "Treasurer": "Alice Wong" } },
     { current_hash: "0x6d9e...2a11", timestamp: "14:28", ballot_data: { "President": "Sarah Connor", "Treasurer": "Bob Miller" } },
@@ -318,19 +316,15 @@ const ElectionDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [expandedBlock, setExpandedBlock] = useState(null);
 
-  // 2. SIMULATE FETCHING
   useEffect(() => {
-    // Mimic API delay
     const timer = setTimeout(() => {
       setData(MOCK_DATA);
       setLoading(false);
     }, 800);
 
     return () => clearTimeout(timer);
-    // Note: We removed the WebSocket logic here completely
-  }, []); // Run once on mount
+  }, []); 
 
-  // 3. Countdown Timer Logic (Kept mostly the same, just removed 'data' dependency since data is static now)
   useEffect(() => {
     if (!data) return;
     const timer = setInterval(() => {
@@ -370,7 +364,7 @@ const ElectionDashboard = () => {
     const match = str.match(/(\d{1,2}):\d{2}/);
     if (match) {
         const hour = match[1].padStart(2, '0');
-        return `${hour}:00:00`;
+        return `${hour}:00`; /
     }
     return str;
   };
@@ -384,7 +378,6 @@ const ElectionDashboard = () => {
     <Layout>
       <div className="px-6 lg:px-20 py-8 max-w-[1600px] mx-auto">
 
-        {/* --- HEADER --- */}
         <div className="flex flex-col lg:flex-row justify-between items-end gap-6 mb-8">
             <div className="flex flex-col gap-2 max-w-3xl">
                 <div className="flex flex-wrap items-center gap-4 mb-1">
@@ -417,12 +410,9 @@ const ElectionDashboard = () => {
             </div>
         </div>
 
-        {/* --- Main Content Split --- */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-            {/* Left Column: Voting Results */}
             <div className="lg:col-span-7 flex flex-col gap-8">
-                {/* Position Tabs */}
                 <div className="flex border-b border-[#9D4EDD]/30 gap-8 overflow-x-auto pb-1 scrollbar-hide">
                     {data.positions.map((pos, index) => (
                         <button
@@ -442,7 +432,6 @@ const ElectionDashboard = () => {
                     ))}
                 </div>
 
-                {/* Candidate List */}
                 <div className="flex flex-col gap-5">
                     {currentPosition ? (
                         currentPosition.candidates.map((candidate) => (
@@ -490,7 +479,6 @@ const ElectionDashboard = () => {
                 </div>
             </div>
 
-            {/* Right Column: Public Ledger */}
             <div className="lg:col-span-5 flex flex-col h-full">
                 <div className="flex items-center justify-between mb-6 pb-2 border-b border-[#00E5FF]/20">
                     <h2 className="text-xl font-bold text-[#E0F7FA] flex items-center gap-2">
@@ -523,7 +511,7 @@ const ElectionDashboard = () => {
                                         {block.current_hash}
                                     </div>
                                     <div className="col-span-3 text-right">
-                                        {expandedBlock === block.current_hash ? "▼" : block.timestamp}
+                                        {expandedBlock === block.current_hash ? "▼" : formatLedgerTime(block.timestamp)}
                                     </div>
                                 </div>
 
